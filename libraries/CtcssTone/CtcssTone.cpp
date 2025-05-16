@@ -8,7 +8,7 @@
  */
 
 /* Include files */
-#include "arduino.h"
+#include "Arduino.h"
 #include "CtcssToneId.h"
 #include "CtcssTone.h"
 
