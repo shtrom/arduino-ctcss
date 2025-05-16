@@ -23,53 +23,46 @@ const int D3 = 6;
 const int D4 = 7;
 const int LED = LED_BUILTIN; //13
 
-byte ctcss_code = 22;
-byte last_code = 0;
+byte ctcss_code = tone_ctcss_V;
+byte last_code = ctcss_code;
 Tone_Id current_tone;
 volatile byte state = LOW;
 
 long loop_count = 0;
 
 Tone_Id tone_map[] = {
-    tone_no_tone,
-    tone_ctcss_A,
-    tone_ctcss_B,
-    tone_ctcss_C,
-    tone_ctcss_D,
-    tone_ctcss_E,
-    tone_ctcss_F,
-    tone_ctcss_G,
-    tone_ctcss_H,
-    tone_ctcss_I,
-    tone_ctcss_J,
-    tone_ctcss_K,
-    tone_ctcss_L,
-    tone_ctcss_M,
-    tone_ctcss_N,
-    tone_ctcss_O,
-    tone_ctcss_P,
-    tone_ctcss_Q,
-    tone_ctcss_R,
-    tone_ctcss_S,
-    tone_ctcss_T,
-    tone_ctcss_U,
-    tone_ctcss_V,
-    tone_ctcss_W,
-    tone_ctcss_X,
-    tone_ctcss_Y,
-    tone_ctcss_Z,
-    tone_ctcss_AA,
-    tone_ctcss_AB,
-    tone_ctcss_AC,
-    tone_ctcss_AD,
-    tone_ctcss_AE,
-    tone_ctcss_AF,
-    tone_ctcss_AG,
-    tone_ctcss_AH,
-    tone_ctcss_AI,
-    tone_ctcss_AJ,
-    tone_ctcss_AK,
-    tone_ctcss_AL
+    tone_no_tone,  /*  0 -> None  */
+    tone_ctcss_AK, /*  1 -> AK/241.8 */
+    tone_ctcss_AJ, /*  2 -> AJ/233.6 */
+    tone_ctcss_AI, /*  3 -> AI/225.7 */
+    tone_ctcss_AH, /*  4 -> AH/218.1 */
+    tone_ctcss_AG, /*  5 -> AG/210.7 */
+    tone_ctcss_AF, /*  6 -> AF/203.5 */
+    tone_ctcss_AE, /*  7 -> AE/192.8 (maybe) */
+    tone_ctcss_AD, /*  8 -> AD/186.2 */
+    tone_ctcss_AC, /*  9 -> AC/179.9 */
+    tone_ctcss_AB, /* 10 -> AB/173.8 */
+    tone_ctcss_AA, /* 11 -> AA/167.9 */
+    tone_ctcss_Z,  /* 12 -> Z/162.2 */
+    tone_ctcss_Y,  /* 13 -> Y/156.7 */
+    tone_ctcss_X,  /* 14 -> X/151.4 */
+    tone_ctcss_W,  /* 15 -> W/146.2 [VK linked repeaters] */
+    tone_ctcss_V,  /* 16 -> V/141.3 [VK linked repeaters]*/
+    tone_ctcss_U,  /* 17 -> U/136.5 (maybe)*/
+    tone_ctcss_T,  /* 18 -> T/131.8 */
+    tone_ctcss_S,  /* 19 -> S/127.3 */
+    tone_ctcss_R,  /* 20 -> R/123.0 [VK X-band repeaters, obsolete ]*/
+    tone_ctcss_Q,  /* 21 -> Q/118.8 */
+    tone_ctcss_P,  /* 22 -> P/114.8 */
+    tone_ctcss_O,  /* 23 -> O/110.9 */
+    tone_ctcss_N,  /* 24 -> N/107.2 */
+    tone_ctcss_M,  /* 25 -> M/103.5 */
+    tone_ctcss_L,  /* 26 -> L/100.0 */
+    tone_ctcss_J,  /* 27 -> J/94.8 */
+    tone_ctcss_I,  /* 28 -> I/91.5 [VK repeaters] (orig H/88.5) */
+    tone_ctcss_G,  /* 29 -> G/85.4 [VK X-band repeaters] (orig F/82.5) */
+    tone_ctcss_D,  /* 30 -> D/77.0 */
+    tone_ctcss_B,  /* 31 -> B/71.9 */
 };
 
 // INT0 handler
