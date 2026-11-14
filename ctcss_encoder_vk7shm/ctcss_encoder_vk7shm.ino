@@ -100,15 +100,15 @@ void setup()
   // configure interrupt
   attachInterrupt(digitalPinToInterrupt(strobe), int_strobe, RISING); // HD14175BP strobes on rising clock signal
 
-  Serial.begin(9600);
-  
+  // Serial.begin(9600);
+
   // initialise the CTCSS tone generation
   // -------------------------------------
   CtcssTone.init();
 
-  Serial.println("CTCSS Encoder ready.");
-  Serial.print("Starting with ");
-  Serial.println(ctcss_code);
+  // Serial.println("CTCSS Encoder ready.");
+  // Serial.print("Starting with ");
+  // Serial.println(ctcss_code);
 }
 
 // main program loop
@@ -119,8 +119,8 @@ void loop()
    digitalWrite (LED, state ) ;
 
    if(++loop_count > 1024000) {
-     Serial.print("Looping with ");
-     Serial.println(ctcss_code);
+    //  Serial.print("Looping with ");
+    //  Serial.println(ctcss_code);
      loop_count = 0;
    }
 
@@ -130,8 +130,8 @@ void loop()
 
    last_code = ctcss_code;
 
-  Serial.print("New code received: ");
-  Serial.println(ctcss_code);
+  //  Serial.print("New code received: ");
+  //  Serial.println(ctcss_code);
 
    current_tone = tone_map[ctcss_code];
    CtcssTone.tone_on(current_tone);
