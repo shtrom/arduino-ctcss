@@ -83,12 +83,12 @@ void int_strobe()
   state = !state;
 }
 
-void setup() 
-{                
+void setup()
+{
   // configure the inputs and outputs
   // -------------------------------------
   //  pinMode(tone_out, OUTPUT);  // Configured by CtcssTone.cpp
-  pinMode(LED, OUTPUT); 
+  pinMode(LED, OUTPUT);
 
   pinMode(strobe, INPUT);
   pinMode(D0, INPUT_PULLUP);
@@ -98,11 +98,11 @@ void setup()
   pinMode(D4, INPUT_PULLUP);
 
   // configure interrupt
-  attachInterrupt(digitalPinToInterrupt(strobe), int_strobe, RISING);
+  attachInterrupt(digitalPinToInterrupt(strobe), int_strobe, RISING); // HD14175BP strobes on rising clock signal
 
   Serial.begin(9600);
   
-  // initialise the CTCSS tone generation 
+  // initialise the CTCSS tone generation
   // -------------------------------------
   CtcssTone.init();
 
@@ -112,7 +112,7 @@ void setup()
 // main program loop
 // -------------------------------------
 
-void loop() 
+void loop()
 {
    digitalWrite (LED, state ) ;
 
@@ -121,7 +121,7 @@ void loop()
      Serial.println(ctcss_code);
      loop_count = 0;
    }
-   
+
    if (ctcss_code == last_code) {
       return;
    }
